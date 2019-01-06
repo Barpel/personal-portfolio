@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+import UpperFold from './cmps/UpperFold/UpperFold.component'
+import NavBar from './cmps/NavBar/NavBar.component'
 
 class App extends Component {
+  upperFold = {
+    content1: 'Hey! I\'m',
+    content2: 'A Full-Stack web developer.',
+    name: 'Bar Peled',
+    btnContent: 'View my work'
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {
+          <UpperFold
+            content1={this.upperFold.content1}
+            content2={this.upperFold.content2}
+            name={this.upperFold.name}
+            btnContent={this.upperFold.btnContent}
+          ></UpperFold>
+        }
+        {
+          <NavBar></NavBar>
+        }
       </div>
     );
   }

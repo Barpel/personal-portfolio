@@ -1,0 +1,95 @@
+@import "../../variables.scss";
+$bokehCount: 200; // this needs to match the amount of circles
+$bokehBaseSize: 5rem;
+$bokehBaseOpacity: 0.35;
+$bokehBaseBrightness: 100;
+$bokehBaseDuration: 16s;
+$colorSet: (#ee90a6, #eed890, #eea990, #90d5ee, #a990ee);
+.upper-fold {
+  min-height: 50vh;
+  position: relative;
+  & > .upper-fold-background {
+    min-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    & > .circle {
+      position: relative;
+      border-radius: 50%;
+      animation-name: bokeh;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      @for $i from 1 through $bokehCount {
+        &:nth-child(#{$i}) {
+          $randomizedSize: random(10) * 1 + $bokehBaseSize;
+          width: $randomizedSize;
+          height: $randomizedSize;
+          top: random(100) * 1%;
+          left: random(100) * 1%;
+          color: nth($colorSet, random(length($colorSet)));
+          opacity: $bokehBaseOpacity + random(4) * 0.15;
+          box-shadow: ($randomizedSize + 5rem)
+            0
+            (0.2rem + random() * 0.5rem)
+            currentColor;
+          filter: brightness($bokehBaseBrightness + random(150) * 1%);
+          transform-origin: (random(40)-20) * 1rem (random(40)-20) * 1rem;
+          animation-duration: $bokehBaseDuration + random(30) * 1s;
+        }
+      }
+    }
+  }
+  & > .upper-fold-content {
+    z-index: 1;
+    position: absolute;
+    bottom: 20%;
+    right: 25%;
+    display: grid;
+    grid-gap: 15px 0;
+    & > h1 {
+      margin: 0;
+      color: white;
+      font-size: 3rem;
+      text-shadow: 1px 5px 13px rgba(224, 224, 224, 0.267);
+      & > span {
+        color: #eea990;
+        text-shadow: 1px 5px 13px rgba(255, 255, 255, 0.082);
+      }
+    }
+    & > a {
+      border-radius: 5px;
+      padding: 15px;
+      border: 1px solid white;
+      background-color: transparent;
+      font-size: 1.5rem;
+      margin: 0 auto;
+      transition: all 0.3s ease-in-out;
+      color: white;
+      text-shadow: 1px 5px 5px rgba(255, 255, 255, 0.082);
+      min-width: 35%;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > span {
+        transition: all 0.3s;
+      }
+    }
+    & > a:hover {
+      cursor: pointer;
+      background-color: #90d5ee96;
+      border: 1px solid #90d5ee96;
+      & > span {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+@keyframes bokeh {
+  100% {
+    transform: rotate(360deg);
+  }
+}
