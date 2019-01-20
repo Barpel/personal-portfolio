@@ -1,0 +1,117 @@
+@import "../../variables.scss";
+@import "../../animations.scss";
+
+.portfolio {
+  display: grid;
+  max-width: 80%;
+  margin: 0 auto;
+  & > h2 {
+    color: white;
+    font-size: 3rem;
+  }
+  & > .project-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    max-width: 70%;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    & > .project {
+      position: relative;
+      & > img {
+        min-width: 100%;
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        background-color: black;
+      }
+      & > .project-info {
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        opacity: 0;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+        & > div {
+          grid-gap: 5px;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: -10%;
+          opacity: 0;
+          z-index: -1;
+          transition: all 0.3s ease-in-out;
+          overflow: hidden;
+          & > h4 {
+            font-size: 2.5rem;
+            letter-spacing: 0.7px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            // opacity: 0;
+            top: 5%;
+            color: $color1;
+          }
+          & > h5 {
+            color: $color2;
+            margin: 0;
+            font-size: 1.2rem;
+          }
+        }
+        & > a {
+          position: absolute;
+          bottom: -99vh;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          transition: all 0.3s;
+          opacity: 0;
+          z-index: -1;
+          text-decoration: none;
+          color: black;
+          font-size: 1.3rem;
+          cursor: unset;
+          & > span {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid $color2;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+    & > .project:hover {
+      & > .project-info {
+        opacity: 1;
+        visibility: initial;
+        background-color: rgba(255, 255, 255, 0.911);
+        cursor: pointer;
+        & > div {
+          top: 10%;
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+      & > .project-info:hover {
+        & > div {
+          & > h4 {
+          }
+          & > h5 {
+          }
+        }
+        & > a {
+          bottom: 20%;
+          opacity: 1;
+          z-index: 2;
+          & > span:hover {
+            background-color: $color2;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

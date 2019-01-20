@@ -6,7 +6,7 @@ $bokehBaseBrightness: 100;
 $bokehBaseDuration: 16s;
 $colorSet: (#ee90a6, #eed890, #eea990, #90d5ee, #a990ee);
 .upper-fold {
-  min-height: 50vh;
+  min-height: 80vh;
   position: relative;
   & > .upper-fold-background {
     min-width: 100%;
@@ -80,8 +80,8 @@ $colorSet: (#ee90a6, #eed890, #eea990, #90d5ee, #a990ee);
     }
     & > a:hover {
       cursor: pointer;
-      background-color: #90d5ee96;
-      border: 1px solid #90d5ee96;
+      background-color: $color2;
+      border: 1px solid $color2;
       & > span {
         transform: rotate(90deg);
       }

@@ -7,7 +7,7 @@ class UpperFold extends Component {
         const circleCount = 200;
         var circleList = [];
         for (var i = 0; i < circleCount; i++) {
-            circleList.push(<div className="circle"></div>)
+            circleList.push(<div className="circle" key={i}></div>)
         }
         return circleList
     }
@@ -15,7 +15,7 @@ class UpperFold extends Component {
         const { props } = this;
         return (
 
-            <section className="upper-fold" >
+            <section className="upper-fold" id="home">
                 <div className="upper-fold-background">
                     {
                         this.createCircles()
@@ -30,7 +30,7 @@ class UpperFold extends Component {
                     </h1>
                     <h1>{props.content2}</h1>
                     <a href="">
-                    {props.btnContent}&nbsp;
+                        {props.btnContent}&nbsp;
                     <span> &nbsp;⇨</span>
                     </a>
                 </div>
